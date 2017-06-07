@@ -34,7 +34,7 @@ html, body {
   justify-content: center;
 }
 
-.car {
+.moving-object {
   width: 75px;
   height: 125px;
   border: 1px solid red;

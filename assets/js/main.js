@@ -1,11 +1,17 @@
 var bmw = document.getElementById("bmw");
-
+ 
 function leftArrowPressed() {
-  bmw.style.left = parseInt(bmw.style.left) - 25 + 'px';
+  var left = parseInt(bmw.style.left);
+  if (left > 0) {
+    bmw.style.left = left - 25 + 'px';
+  }
 }
-
+ 
 function rightArrowPressed() {
-  bmw.style.left = parseInt(bmw.style.left) + 25 + 'px';
+  var left = parseInt(bmw.style.left);
+  if (left <= 200) {
+    bmw.style.left = left + 25 + 'px';
+  }
 }
 
 function moveSelection(evt) {
