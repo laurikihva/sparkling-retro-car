@@ -15,18 +15,30 @@ html, body {
   max-width: 50%;
 }
 
-.frame {
+.outer-frame {
   width: 350px;
   height: 525px;
   border: 1px solid black;
-  /*display: flex;
+  display: flex;
   align-items: center;
-  justify-content: center;*/
+  justify-content: center;
+}
+
+.inner-frame {
+  width: 300px;
+  height: 525px;
+  border: 1px solid black;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .car {
   width: 75px;
   height: 125px;
   border: 1px solid red;
-  /*align-self: flex-end;*/
+  left: 0;
+  position: absolute;
+  align-self: flex-end;
 }

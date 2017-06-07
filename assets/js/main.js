@@ -1,11 +1,11 @@
+var bmw = document.getElementById("bmw");
+
 function leftArrowPressed() {
-  var element = document.getElementById("car");
-  element.style.left = parseInt(element.style.left) - 25 + 'px';
+  bmw.style.left = parseInt(bmw.style.left) - 25 + 'px';
 }
 
 function rightArrowPressed() {
-  var element = document.getElementById("car");
-  element.style.left = parseInt(element.style.left) + 25 + 'px';
+  bmw.style.left = parseInt(bmw.style.left) + 25 + 'px';
 }
 
 function moveSelection(evt) {
@@ -19,6 +19,6 @@ function moveSelection(evt) {
   }
 }
 
-function docReady() {
+function timeToRace() {
   window.addEventListener('keydown', moveSelection);
 }
