@@ -1,0 +1,32 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.center {
+  max-width: 50%;
+}
+
+.frame {
+  width: 350px;
+  height: 525px;
+  border: 1px solid black;
+  /*display: flex;
+  align-items: center;
+  justify-content: center;*/
+}
+
+.car {
+  width: 75px;
+  height: 125px;
+  border: 1px solid red;
+  /*align-self: flex-end;*/
+}
