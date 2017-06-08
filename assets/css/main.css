@@ -34,11 +34,18 @@ html, body {
   justify-content: center;
 }
 
+#obs {
+  width: 75px;
+  height: 25px;
+  background-color: #000;
+  /*align-self: flex-start;*/
+  position: absolute;
+}
+
 .moving-object {
   width: 75px;
   height: 125px;
   border: 1px solid red;
-  left: 0;
   position: absolute;
   align-self: flex-end;
 }

@@ -28,3 +28,29 @@ function moveSelection(evt) {
 function timeToRace() {
   window.addEventListener('keydown', moveSelection);
 }
+
+// obstacle variables
+var obs = document.getElementById("obs");
+  obsPos = 5,
+  boxVelocity = 2,
+  limit = 525;
+  
+function draw() {
+  obs.style.top = obsPos + 'px';
+}
+
+function update() {
+  if (obsPos < limit) {
+    obsPos += boxVelocity;
+  } else {
+    return;
+  }
+}
+
+function mainLoop() {
+  update();
+  draw();
+  requestAnimationFrame(mainLoop);
+}
+
+requestAnimationFrame(mainLoop);
