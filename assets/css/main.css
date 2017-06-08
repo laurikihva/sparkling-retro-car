@@ -31,7 +31,7 @@ html, body {
   position: relative;
 }
 
-#obs1 {
+.obs1, .obs2, .obs3, .obs4 {
   width: 75px;
   height: 25px;
   background-color: #000;
