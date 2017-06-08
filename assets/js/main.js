@@ -91,7 +91,7 @@ function generateLeftPos() {
 }
 
 function generateLaunchPos() {
-	return Math.floor(Math.random() * (200-125+1)) + 125;
+	return Math.floor(Math.random() * (225 - 150 + 1)) + 150;
 }
 
 function update() {
@@ -119,4 +119,9 @@ function mainLoop() {
   requestAnimationFrame(mainLoop);
 }
 
-requestAnimationFrame(mainLoop);
+// Start button
+function start() {
+  var start = document.getElementById('start');
+  start.style.display = 'none';
+  requestAnimationFrame(mainLoop);
+}
