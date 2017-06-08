@@ -5,19 +5,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet" />
    </head>
   <body onload="timeToRace()" onkeydown="" onkeyup="">
     <div class="wrapper">
       <div class="center">
-        <h1>Sparkling Retro Car</h1>
+        <h1>Sparkling <span>Retro Car</span></h1>
         <div class="outer-frame">
           <div class="inner-frame">
+            <ul>
+              <li>Speed 1</li>
+              <li>Score 0</li>
+            </ul>
+            <div class="start" id="start"><h2 onclick="start()">Start</h2></div>
             <div class="obs1" id="obs1" style="top:0;"></div>
             <div class="obs2" id="obs2" style="top:0;"></div>
             <div class="obs3" id="obs3" style="top:0;"></div>
             <div class="obs4" id="obs4" style="top:0;"></div>
-            <div class="moving-object" id="bmw" style="left:0;">
+            <div class="moving-object" id="bmw" style="left:125px;">
+              <div class="part1 mid"></div>
+              <div class="part2"></div>
+              <div class="part1 mid"></div>
+              <div class="part3">
+                <div class="part1"></div>
+                <div class="part1"></div>
+              </div>
             </div> <!-- moving-object -->
           </div> <!-- inner-frame -->
         </div> <!-- outer-frame -->
