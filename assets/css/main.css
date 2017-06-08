@@ -29,17 +29,14 @@ html, body {
   height: 525px;
   border: 1px solid black;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-#obs {
+#obs1 {
   width: 75px;
   height: 25px;
   background-color: #000;
-  /*align-self: flex-start;*/
   position: absolute;
+  opacity: 0;
 }
 
 .moving-object {
@@ -47,5 +44,5 @@ html, body {
   height: 125px;
   border: 1px solid red;
   position: absolute;
-  align-self: flex-end;
+  bottom: 0;
 }

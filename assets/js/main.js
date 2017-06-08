@@ -1,3 +1,4 @@
+// arrow keys for controller
 var bmw = document.getElementById("bmw");
  
 function leftArrowPressed() {
@@ -30,10 +31,11 @@ function timeToRace() {
 }
 
 // obstacle variables
-var obs = document.getElementById("obs");
-  obsPos = 5,
+var obs = document.getElementById("obs1");
+  obsPos = 0,
+  obsLeftPos = obs.style.left = (Math.floor(Math.random() * 225) + 0) + 'px',
   boxVelocity = 2,
-  limit = 525;
+  limit = 500;
   
 function draw() {
   obs.style.top = obsPos + 'px';
@@ -41,8 +43,11 @@ function draw() {
 
 function update() {
   if (obsPos < limit) {
+    obsLeftPos;
+    obs.style.opacity = 1;
     obsPos += boxVelocity;
   } else {
+    obs.style.opacity = 0;
     return;
   }
 }
