@@ -15,21 +15,41 @@
         <div class="outer-frame">
           <div class="inner-frame">
             <ul>
-              <li>Speed 1</li>
-              <li>Score 0</li>
+              <li id="speed">Speed 1</li>
+              <li id="score">Score 0</li>
             </ul>
             <div class="start" id="start"><h2 onclick="start()">Start</h2></div>
-            <div class="obs1" id="obs1" style="top:0;"></div>
-            <div class="obs2" id="obs2" style="top:0;"></div>
-            <div class="obs3" id="obs3" style="top:0;"></div>
-            <div class="obs4" id="obs4" style="top:0;"></div>
-            <div class="moving-object" id="bmw" style="left:125px;">
-              <div class="part1 mid"></div>
-              <div class="part2"></div>
-              <div class="part1 mid"></div>
-              <div class="part3">
-                <div class="part1"></div>
-                <div class="part1"></div>
+            <div class="obs-block-container" id="obs1" style="top:0;">
+              <div class="obs-block"></div>
+              <div class="obs-block"></div>
+              <div class="obs-block"></div>
+            </div>
+            <div class="obs-block-container" id="obs2" style="top:0;">
+              <div class="obs-block"></div>
+              <div class="obs-block"></div>
+              <div class="obs-block"></div>
+            </div>
+            <div class="obs-block-container" id="obs3" style="top:0;">
+              <div class="obs-block"></div>
+              <div class="obs-block"></div>
+              <div class="obs-block"></div>
+            </div>
+            <div class="obs-block-container" id="obs4" style="top:0;">
+              <div class="obs-block"></div>
+              <div class="obs-block"></div>
+              <div class="obs-block"></div>
+            </div>
+            <div class="vehicle-block-container" id="bmw" style="left:125px;">
+              <div class="vehicle-block mid"></div>
+              <div class="vehicle-row2">
+                <div class="vehicle-block"></div>
+                <div class="vehicle-block"></div>
+                <div class="vehicle-block"></div>
+              </div>
+              <div class="vehicle-block mid"></div>
+              <div class="vehicle-row3">
+                <div class="vehicle-block"></div>
+                <div class="vehicle-block"></div>
               </div>
             </div> <!-- moving-object -->
           </div> <!-- inner-frame -->
