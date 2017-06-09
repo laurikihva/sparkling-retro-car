@@ -2,6 +2,7 @@
 
 Progress of my BrightSpark test assignment.
 Tasks that I managed to do so far:
+
 	- 12 units wide road
 	- car at the bottom of screen
 	- can move only left and right and can't go off read
@@ -12,6 +13,7 @@ Tasks that I managed to do so far:
 	- after 20sec level increased
 	- used the required font
 Still to do:
+
 	- collision effect which also pops up game over sign
 	- start and game over fade-in and fade-out animations
 	- sides design for outer frame of game table (was thinking of svg 
