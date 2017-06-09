@@ -59,8 +59,10 @@ var obs1 = {
     launchNext: generateLaunchPos(),
     launched: false
   },
-	limit = 500,
-	velocity = 2,
+  limit = 500,
+  speed = 2,
+  level = 1,
+  score = 0,
   offField = [obs2, obs3, obs4],
   onField = [obs1];
 
@@ -76,10 +78,11 @@ function draw() {
 }
 
 function reset(obs) {
-	obs.el.style.opacity = 0;
+  obs.el.style.opacity = 0;
   obs.el.style.top = 0;
-	obs.position = 0;
+  obs.position = 0;
   obs.left = generateLeftPos();
+  obs.el.style.left = obs.left;
   obs.launchNext = generateLaunchPos();
   obs.launched = false;
   offField.push(obs);
@@ -87,29 +90,31 @@ function reset(obs) {
 }
 
 function generateLeftPos() {
-	return Math.floor(Math.random() * 225) + 'px';
+  return Math.floor(Math.random() * 225) + 'px';
 }
 
 function generateLaunchPos() {
-	return Math.floor(Math.random() * (225 - 150 + 1)) + 150;
+  return Math.floor(Math.random() * (225 - 150 + 1)) + 150;
 }
 
 function update() {
-	var newObs;
+  var newObs;
   
   onField.forEach(function(obs) {
-      obs.position += velocity;
+    obs.position += speed;
       
-      if (obs.position > limit) {
-      	reset(obs);
-      }
+    if (obs.position > limit) {
+      reset(obs);
+      score += level;
+      document.getElementById('score').innerHTML = "Score " + score;
+    }
       
-      if (obs.position >= obs.launchNext && !obs.launched) {
-      	obs.launched = true;
-        newObs = offField.pop();
-        newObs.el.style.opacity = 1;
-      	onField.push(newObs);
-      }
+    if (obs.position >= obs.launchNext && !obs.launched) {
+      obs.launched = true;
+      newObs = offField.pop();
+      newObs.el.style.opacity = 1;
+      onField.push(newObs);
+    }
   });
 }
 
