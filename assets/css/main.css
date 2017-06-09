@@ -29,7 +29,7 @@ h2 {
   cursor: pointer;
 }
 
-span {
+h1 span {
   color: #FF7AAC;
 }
 
@@ -38,10 +38,6 @@ span {
   align-items: center;
   justify-content: center;
   height: 100%;
-}
-
-.center {
-  max-width: 50%;
 }
 
 .outer-frame {
@@ -77,6 +73,26 @@ ul {
   margin-top: 120px;
   color: #FF7AAC;
   font-size: 30px;
+}
+
+.over {
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  margin-top: -120px;
+  display: none;
+}
+
+h3 {
+  max-width: 200px;
+  padding: 20px;
+  font-size: 10px;
+  border: 1px solid #89D2DB;
+  text-align: center;
+  margin-left: 50px;
+  background-color: #fff;
+  color: #FF7AAC;
+  cursor: pointer;
 }
 
 .obs-block-container {

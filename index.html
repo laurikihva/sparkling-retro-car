@@ -15,10 +15,14 @@
         <div class="outer-frame">
           <div class="inner-frame">
             <ul>
-              <li id="speed">Speed 1</li>
-              <li id="score">Score 0</li>
+              <li>Speed <span id="speed">1</span></li>
+              <li>Score <span id="score">0</span></li>
             </ul>
             <div class="start" id="start"><h2 onclick="start()">Start</h2></div>
+            <div class="over" id="over">
+              <h2 onclick="">Game Over</h2>
+              <h3 onclick="start()">Start New Game</h3>
+            </div>
             <div class="obs-block-container" id="obs1" style="top:0;">
               <div class="obs-block"></div>
               <div class="obs-block"></div>

@@ -62,9 +62,20 @@ var obs1 = {
   limit = 500,
   speed = 2,
   level = 1,
-  score = 0,
+  score = -1,
   offField = [obs2, obs3, obs4],
   onField = [obs1];
+  
+  
+var startGame = document.getElementById('start');
+var restart = document.getElementById('over');
+
+// Updating speed level after every 20sec with 1 unit
+var levelInterval = setInterval(function() {
+  speed += 1;
+  level += 1;
+  document.getElementById('speed').innerHTML = level;
+}, 20000);
 
 obs1.el.style.left = obs1.left;
 obs2.el.style.left = obs2.left;
@@ -89,12 +100,22 @@ function reset(obs) {
   onField.splice(onField.indexOf(obs), 1); // Should check if indexOf returns -1
 }
 
+// calculating numbers from min to max
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// getting all numbers divided by 25 between min and max
+function getRandom25(min, max) {
+  return getRandomInt(min / 25, max / 25) * 25;
+}
+
 function generateLeftPos() {
-  return Math.floor(Math.random() * 225) + 'px';
+  return getRandom25(0, 225) + 'px'; // 0 is position for left border and 225 for right border
 }
 
 function generateLaunchPos() {
-  return Math.floor(Math.random() * (225 - 150 + 1)) + 150;
+  return getRandom25(150, 225); // Distance between 150 and 225 is 5-8 units that obstacles will randomly spawn
 }
 
 function update() {
@@ -106,7 +127,7 @@ function update() {
     if (obs.position > limit) {
       reset(obs);
       score += level;
-      document.getElementById('score').innerHTML = "Score " + score;
+      document.getElementById('score').innerHTML = score;
     }
       
     if (obs.position >= obs.launchNext && !obs.launched) {
@@ -126,7 +147,13 @@ function mainLoop() {
 
 // Start button
 function start() {
-  var start = document.getElementById('start');
-  start.style.display = 'none';
+  startGame.style.display = 'none';
+  restart.style.display = 'none';
   requestAnimationFrame(mainLoop);
 }
+
+// function finish() {
+//   restart.style.display = '';
+//   cancelAnimationFrame(mainLoop);
+//   clearInterval(levelInterval);
+// }
