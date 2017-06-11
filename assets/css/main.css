@@ -25,7 +25,7 @@ h1 {
   text-align: center;
 }
 
-h2 {
+.start h2 {
   cursor: pointer;
 }
 
@@ -47,7 +47,7 @@ h1 span {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+  background: url("https://image.prntscr.com/image/gMTuKSipRoOrs9Z1JZdhXA.jpg");
 }
 
 .inner-frame {
@@ -79,7 +79,6 @@ ul {
   color: #000;
   font-size: 30px;
   text-align: center;
-  margin-top: -120px;
   display: none;
 }
 
