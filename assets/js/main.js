@@ -71,10 +71,6 @@ function keyController(evt) {
   }
 }
 
-function timeToRace() {
-  window.addEventListener('keydown', keyController);
-}
-
 function draw() {
   onField.forEach(function(obs) {
     obs.el.style.top = obs.position + 'px';
@@ -90,8 +86,10 @@ function reset(obs) {
   obs.launchNext = generateLaunchPos();
   obs.launched = false;
   offField.push(obs);
-  console.log('i:', onField.indexOf(obs));
+  // console.log('i:', onField.indexOf(obs));
+  // console.log('Before: ', onField);
   onField.splice(onField.indexOf(obs), 1); // Should check if indexOf returns -1
+  // console.log('After: ', onField);
 }
 
 // Calculating numbers from min to max
@@ -129,13 +127,13 @@ function update() {
     carLeft = parseInt(bmw.style.left);
     carRight = carLeft + carWidth;
     carBottom = carTop + carHeight;
-      
+  
     if (obs.position > limit) {
       reset(obs);
       score += level;
       document.getElementById('score').innerHTML = score;
     }
-      
+  
     if (obs.position >= obs.launchNext && !obs.launched) {
       obs.launched = true;
       newObs = offField.pop();
@@ -161,7 +159,14 @@ function mainLoop() {
 
 // Start button
 function start() {
-	console.log('start');
+  onField.forEach(function(obs) {
+    reset(obs);
+    obs.el.style.opacity = 0;
+  });
+  
+  console.log('Starting onField: ', onField);
+  console.log('Starting offField: ', offField);
+  
 	var newObs = offField.pop();
 
   startGame.style.display = 'none';
@@ -176,7 +181,13 @@ function start() {
   obs3.el.style.left = obs3.left;
   obs4.el.style.left = obs4.left;
   
+  document.addEventListener('keydown', keyController);
+  
   finished = false;
+  speed = 2;
+  // document.getElementById('level').innerHTML = level;
+  // document.getElementById('score').innerHTML = score;
+  
   
   // Updating speed level after every 20sec with 1 unit
   clearInterval(levelInterval);
@@ -188,16 +199,15 @@ function start() {
 }
 
 function finish() {
+  console.log('OnField: ', onField);
+  console.log('OffField: ', offField);
+  document.removeEventListener('keydown', keyController);
   finished = true;
   restart.style.display = 'block';
   console.log(animationRequest);
   cancelAnimationFrame(animationRequest);
   clearInterval(levelInterval);
-  
-  setTimeout(function() {
-  	onField.forEach(function(obs) {
-  		reset(obs);
-  	});
-  }, 100);
-    
+  level = 1;
+  score = 0;
+  // break;
 }

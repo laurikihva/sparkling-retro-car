@@ -67,31 +67,68 @@ ul {
 }
 
 .start {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 120px;
   color: #FF7AAC;
   font-size: 30px;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  padding-top: 120px;
+  text-align: center;
+  z-index: 0;
+  position: absolute;
+}
+
+.start::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  pointer-events: none;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .over {
-  color: #000;
+  height: 100%;
+  color: #fff;
+  top: 0;
   font-size: 30px;
   text-align: center;
+  padding-top: 80px;
   display: none;
+  z-index: 0;
+  position: absolute;
 }
 
-h3 {
+.over::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  pointer-events: none;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.over h3 {
   max-width: 200px;
   padding: 20px;
   font-size: 10px;
-  border: 1px solid #89D2DB;
+  border: 2px solid #89D2DB;
   text-align: center;
-  margin-left: 50px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #fff;
   color: #FF7AAC;
   cursor: pointer;
+}
+
+.over h3:hover {
+  background-color: #89D2DB;
 }
 
 .obs-block-container {

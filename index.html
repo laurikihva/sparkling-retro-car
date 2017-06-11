@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet" />
    </head>
-  <body onload="timeToRace()" onkeydown="" onkeyup="">
+  <body>
     <div class="wrapper">
       <div class="center">
         <h1>Sparkling <span>Retro Car</span></h1>
@@ -18,11 +18,6 @@
               <li>Speed <span id="speed">1</span></li>
               <li>Score <span id="score">0</span></li>
             </ul>
-            <div class="start" id="start"><h2 onclick="start()">Start</h2></div>
-            <div class="over" id="over">
-              <h2 onclick="">Game Over</h2>
-              <h3 onclick="start()">Start New Game</h3>
-            </div>
             <div class="obs-block-container" id="obs1" style="top:0;">
               <div class="obs-block"></div>
               <div class="obs-block"></div>
@@ -55,7 +50,12 @@
                 <div class="vehicle-block"></div>
                 <div class="vehicle-block"></div>
               </div>
-            </div> <!-- moving-object -->
+            </div> <!-- vehcile-block-container -->
+            <div class="start" id="start"><h2 onclick="start()">Start</h2></div>
+            <div class="over" id="over">
+              <h2 onclick="">Game Over</h2>
+              <h3 onclick="start()">Start New Game</h3>
+            </div> <!-- over -->
           </div> <!-- inner-frame -->
         </div> <!-- outer-frame -->
       </div> <!-- center -->
