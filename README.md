@@ -15,7 +15,7 @@ Progress of my BrightSpark test assignment.
 
 ## Still to do:
 
-- collision effect which also pops up game over sign
+~~~- collision effect which also pops up game over sign~~
 - start and game over fade-in and fade-out animations
 - sides design for outer frame of game table (was thinking of svg because with CSS I would need too many div's in HTML)
 
