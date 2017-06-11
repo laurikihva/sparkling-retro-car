@@ -18,6 +18,7 @@ Progress of my BrightSpark test assignment.
 - ~~collision effect which also pops up game over sign~~
 - start and game over fade-in and fade-out animations
 - sides design for outer frame of game table (was thinking of svg because with CSS I would need too many div's in HTML)
+- controller for mobile/tablet
 
 I will still try to complete all those tasks above in near future and make this 
 game work like it should. Any kind a feedback is more than welcome.
