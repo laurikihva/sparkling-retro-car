@@ -1,36 +1,4 @@
-// arrow keys for controller
-var bmw = document.getElementById("bmw");
- 
-function leftArrowPressed() {
-  var left = parseInt(bmw.style.left);
-  if (left > 0) {
-    bmw.style.left = left - 25 + 'px';
-  }
-}
- 
-function rightArrowPressed() {
-  var left = parseInt(bmw.style.left);
-  if (left <= 200) {
-    bmw.style.left = left + 25 + 'px';
-  }
-}
-
-function moveSelection(evt) {
-  switch (evt.keyCode) {
-    case 37:
-    leftArrowPressed();
-    break;
-    case 39:
-    rightArrowPressed();
-    break;
-  }
-}
-
-function timeToRace() {
-  window.addEventListener('keydown', moveSelection);
-}
-
-// obstacle variables
+// Global variables
 var obs1 = {
     el: document.getElementById("obs1"),
     left: generateLeftPos(),
@@ -62,25 +30,50 @@ var obs1 = {
   limit = 500,
   speed = 2,
   level = 1,
-  score = -1,
-  offField = [obs2, obs3, obs4],
-  onField = [obs1];
-  
-  
-var startGame = document.getElementById('start');
-var restart = document.getElementById('over');
+  score = 0,
+  offField = [obs1, obs2, obs3, obs4],
+  onField = [],
+  animationRequest,
+  levelInterval,
+  obsWidth = 75,
+  obsHeight = 25,
+  carWidth = 75,
+  carHeight = 100,
+  carTop = 425,
+	startGame = document.getElementById('start'),
+	restart = document.getElementById('over'),
+	bmw = document.getElementById("bmw"),
+  finished = false;
 
-// Updating speed level after every 20sec with 1 unit
-var levelInterval = setInterval(function() {
-  speed += 1;
-  level += 1;
-  document.getElementById('speed').innerHTML = level;
-}, 20000);
+// Arrow controllers
+function leftArrowPressed() {
+  var left = parseInt(bmw.style.left);
+  if (left > 0) {
+    bmw.style.left = left - 25 + 'px';
+  }
+}
+ 
+function rightArrowPressed() {
+  var left = parseInt(bmw.style.left);
+  if (left <= 200) {
+    bmw.style.left = left + 25 + 'px';
+  }
+}
 
-obs1.el.style.left = obs1.left;
-obs2.el.style.left = obs2.left;
-obs3.el.style.left = obs3.left;
-obs4.el.style.left = obs4.left;
+function keyController(evt) {
+  switch (evt.keyCode) {
+    case 37:
+    leftArrowPressed();
+    break;
+    case 39:
+    rightArrowPressed();
+    break;
+  }
+}
+
+function timeToRace() {
+  window.addEventListener('keydown', keyController);
+}
 
 function draw() {
   onField.forEach(function(obs) {
@@ -97,15 +90,16 @@ function reset(obs) {
   obs.launchNext = generateLaunchPos();
   obs.launched = false;
   offField.push(obs);
+  console.log('i:', onField.indexOf(obs));
   onField.splice(onField.indexOf(obs), 1); // Should check if indexOf returns -1
 }
 
-// calculating numbers from min to max
+// Calculating numbers from min to max
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// getting all numbers divided by 25 between min and max
+// Getting all numbers divided by 25 between min and max
 function getRandom25(min, max) {
   return getRandomInt(min / 25, max / 25) * 25;
 }
@@ -119,10 +113,22 @@ function generateLaunchPos() {
 }
 
 function update() {
-  var newObs;
+  var newObs,
+  	obsLeft,
+    obsRight,
+    obsBottom,
+    carBottom,
+    carLeft,
+    carRight;
   
   onField.forEach(function(obs) {
     obs.position += speed;
+    obsLeft = parseInt(obs.left);
+    obsRight = obsLeft + obsWidth;
+    obsBottom = obs.position + obsHeight;
+    carLeft = parseInt(bmw.style.left);
+    carRight = carLeft + carWidth;
+    carBottom = carTop + carHeight;
       
     if (obs.position > limit) {
       reset(obs);
@@ -136,24 +142,62 @@ function update() {
       newObs.el.style.opacity = 1;
       onField.push(newObs);
     }
+  
+    if (obsRight > carLeft && obsLeft < carRight
+      && obsBottom >= carTop && obs.position <= carBottom
+    ) {
+      finish();
+    }
   });
 }
 
 function mainLoop() {
-  update();
-  draw();
-  requestAnimationFrame(mainLoop);
+	if (!finished) {
+    update();
+    draw();
+    animationRequest = requestAnimationFrame(mainLoop);
+  }
 }
 
 // Start button
 function start() {
+	console.log('start');
+	var newObs = offField.pop();
+
   startGame.style.display = 'none';
   restart.style.display = 'none';
-  requestAnimationFrame(mainLoop);
+  animationRequest = requestAnimationFrame(mainLoop);
+  
+  newObs.el.style.opacity = 1;
+  onField.push(newObs);
+  
+  obs1.el.style.left = obs1.left;
+  obs2.el.style.left = obs2.left;
+  obs3.el.style.left = obs3.left;
+  obs4.el.style.left = obs4.left;
+  
+  finished = false;
+  
+  // Updating speed level after every 20sec with 1 unit
+  clearInterval(levelInterval);
+	levelInterval = setInterval(function() {
+    speed += 1;
+    level += 1;
+    document.getElementById('speed').innerHTML = level;
+	}, 20000);
 }
 
-// function finish() {
-//   restart.style.display = '';
-//   cancelAnimationFrame(mainLoop);
-//   clearInterval(levelInterval);
-// }
+function finish() {
+  finished = true;
+  restart.style.display = 'block';
+  console.log(animationRequest);
+  cancelAnimationFrame(animationRequest);
+  clearInterval(levelInterval);
+  
+  setTimeout(function() {
+  	onField.forEach(function(obs) {
+  		reset(obs);
+  	});
+  }, 100);
+    
+}
